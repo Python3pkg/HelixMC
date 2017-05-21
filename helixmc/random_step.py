@@ -18,12 +18,12 @@
 
 import numpy as np
 import abc
-from util import params2coords, circmean, locate_data_file
-from __init__ import random
+from .util import params2coords, circmean, locate_data_file
+from .__init__ import random
 
 
 #####Random base-pair step parameters generator classes#####
-class RandomStepBase(object):
+class RandomStepBase(object, metaclass=abc.ABCMeta):
     """
     Base class for Random bp-step generator, for inheritence only.
 
@@ -35,7 +35,6 @@ class RandomStepBase(object):
         Random bp-step generator by aggregrating multiple independent bp-step
         generators.
     """
-    __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
     def __init__(self):

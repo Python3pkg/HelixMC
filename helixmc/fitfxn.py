@@ -18,7 +18,7 @@
 
 import numpy as np
 from copy import copy
-from __init__ import kBT
+from .__init__ import kBT
 
 
 def wlc_odijk(F, A, L, S, kT=kBT):

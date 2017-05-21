@@ -15,15 +15,15 @@ cmdline += '-force 5 '
 cmdline += '-compute_fuller_link True '
 cmdline += ' -out_frame test_run'
 
-print 'HelixMC command line:', cmdline
+print('HelixMC command line:', cmdline)
 subprocess.check_call(cmdline.split())
 
 # Data Analysis #
 data = np.load('MC_data.npz')
-print 'Data content:', data.files
-print 'Z-coord:', data['coord_terminal'][:, 2]  # 2 for the z-elements
-print 'Avg. Z:', np.average(data['coord_terminal'][:, 2])  # avg. z-extension in Å
-print 'Avg. Link:', np.average(data['twist'] + data['writhe'])  # avg. link in radian
+print('Data content:', data.files)
+print('Z-coord:', data['coord_terminal'][:, 2])  # 2 for the z-elements
+print('Avg. Z:', np.average(data['coord_terminal'][:, 2]))  # avg. z-extension in Å
+print('Avg. Link:', np.average(data['twist'] + data['writhe']))  # avg. link in radian
 
 # Helix Plotting #
 pose = HelixPose.from_file('test_run.npz')

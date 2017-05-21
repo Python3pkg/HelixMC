@@ -9,7 +9,7 @@ random_step = RandomStepAgg(database)
 n_step = 1000000
 avg_R = np.zeros((3, 3))
 avg_o = np.zeros(3)
-for i in xrange(n_step):
+for i in range(n_step):
     params, o, R = random_step()
     avg_o += o
     avg_R += R
@@ -21,4 +21,4 @@ A = np.eye(4)
 A[:3, :3] = avg_R
 A[3, :3] = avg_o
 Lp = np.linalg.matrix_power(A, 10000)[3, 2]
-print 'Bending persistence length:', (Lp / 10), 'nm'
+print('Bending persistence length:', (Lp / 10), 'nm')

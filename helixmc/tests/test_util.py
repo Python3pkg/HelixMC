@@ -69,7 +69,7 @@ def test_writhe_twist():
 
     angle = np.pi * 0.1
     total_angle = angle * n
-    for i in xrange(1, n+1):
+    for i in range(1, n+1):
         rb_axis[i] = util.Rz(angle).dot(rb_axis[i-1])
     assert_allclose(util.ribbon_twist(dr, rb_axis), total_angle)
 

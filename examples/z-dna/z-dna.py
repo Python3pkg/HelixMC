@@ -15,15 +15,15 @@ cmdline += '-force 5 '
 cmdline += '-compute_fuller_link '
 cmdline += '-out_frame test_run'
 
-print 'Z-DNA command line:', cmdline
+print('Z-DNA command line:', cmdline)
 subprocess.check_call(cmdline.split())
 
 # Data Analysis #
 data = np.load('MC_data.npz')
 # avg. z-extension in Å
-print 'Avg. Z:', np.average(data['coord_terminal'][:, 2])
+print('Avg. Z:', np.average(data['coord_terminal'][:, 2]))
 # avg. link in radian
-print 'Avg. Link:', np.average(data['twist'] + data['writhe'])
+print('Avg. Link:', np.average(data['twist'] + data['writhe']))
 
 # Helix Plotting #
 pose = HelixPose.from_file('test_run.npz')

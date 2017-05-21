@@ -405,7 +405,7 @@ def params2data(params, frame0=None):
     frames = np.zeros((n_bp, 3, 3))
     o, R = params2coords(params)
     unitarize(R)
-    for i in xrange(n_bp):
+    for i in range(n_bp):
         if i == 0:
             frames[i] = unitarize(frame0)
         else:

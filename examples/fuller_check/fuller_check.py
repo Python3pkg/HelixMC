@@ -12,7 +12,7 @@ cmdline += '-n_step 50 '
 cmdline += '-force 0 '
 cmdline += '-check_fuller fuller_check.out '
 
-print 'Fuller-Check command line:', cmdline
+print('Fuller-Check command line:', cmdline)
 subprocess.check_call(cmdline.split())
 
 # Data Plotting #

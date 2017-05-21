@@ -1,7 +1,7 @@
 import tempfile
 import subprocess
 import gzip
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import os.path
 import os
 import glob
@@ -21,8 +21,8 @@ for pdb_id in open(pdb_list):
     addr = '%s%s' % (server_name, filename)
     if (not os.path.exists(filename) and
             not os.path.exists(filename_pdb)):
-        print 'Downloading', filename
-        urllib.urlretrieve(addr, filename)  # Download the files
+        print('Downloading', filename)
+        urllib.request.urlretrieve(addr, filename)  # Download the files
 
         #Uncompression
     if os.path.exists(filename):
@@ -53,7 +53,7 @@ seq_list = [
     'AA', 'AT', 'AG', 'AC', 'GA', 'GC', 'GT', 'GG', 'TT',
     'TA', 'TC', 'TG', 'CC', 'CG', 'CA', 'CT'
 ]
-params = [[] for i in xrange(16)]
+params = [[] for i in range(16)]
 for out_3dna in glob.glob('*.out'):
     is_readline1 = False
     is_readline2 = False
@@ -104,7 +104,7 @@ all_params = np.vstack(params_filtered)  # list without sequence dependence
 
 # Plot the histogram before clustering #
 fig = plt.figure(figsize=(12, 8))
-for i in xrange(6):
+for i in range(6):
     subplt = fig.add_subplot(2, 3, i+1)
     plt.hist(all_params[:, i], 30, histtype='step')
     plt.title(params_name[i])
@@ -122,9 +122,9 @@ centr = np.vstack((reject_cluster, acpt_cluster))
 # Plot after clustering #
 idx, _ = vq.vq(whitened, centr)
 fig = plt.figure(figsize=(12, 8))
-for i in xrange(6):
+for i in range(6):
     subplt = fig.add_subplot(2, 3, i+1)
-    for j in xrange(n_cluster):
+    for j in range(n_cluster):
         plt.hist(all_params[idx == j][:, i], 30, histtype='step')
     plt.title(params_name[i])
 
@@ -141,7 +141,7 @@ for params in params_filtered:
 
 # Output the database file #
 expr = "np.savez( 'DNA_2.0_noprot',"
-for i in xrange(16):
+for i in range(16):
     expr += " %s = final_params[%d], " % (seq_list[i], i)
 expr += ')'
 eval(expr)

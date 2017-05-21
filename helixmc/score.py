@@ -22,11 +22,10 @@ import numpy as np
 
 
 #####Score function#####
-class ScoreBase(object):
+class ScoreBase(object, metaclass=abc.ABCMeta):
     '''
     Base class for scoring fucntion, for inheritence only.
     '''
-    __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
     def __init__(self):

@@ -19,9 +19,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.axes3d as p3
-from util import params2data, writhe_exact, writhe_fuller, ribbon_twist
-from util import params2coords, unitarize, dr2coords, circmean
-from __init__ import ez
+from .util import params2data, writhe_exact, writhe_fuller, ribbon_twist
+from .util import params2coords, unitarize, dr2coords, circmean
+from .__init__ import ez
 
 
 #####Pose object storing the state info of the helix#####
@@ -398,10 +398,10 @@ class HelixPose(object):
             Keys that are excluded from the clear action.
         '''
         if exclude is None:
-            for j in self._obs.iterkeys():
+            for j in self._obs.keys():
                 self._obs[j] = None
         else:
-            for j in self._obs.iterkeys():
+            for j in self._obs.keys():
                 if j not in exclude:
                     self._obs[j] = None
 
@@ -519,7 +519,7 @@ class HelixPose(object):
             ax = fig_ax
         ax.plot3D(bb1[:, 0], bb1[:, 1], bb1[:, 2], color[0] + '-')
         ax.plot3D(bb2[:, 0], bb2[:, 1], bb2[:, 2], color[0] + '-')
-        for i in xrange(bb1.shape[0]):
+        for i in range(bb1.shape[0]):
             ax.plot3D(
                 np.array([bb1[i, 0], bb2[i, 0]]),
                 np.array([bb1[i, 1], bb2[i, 1]]),

@@ -79,7 +79,7 @@ def fit_func3(F, C):
 
 [C], pcov = curve_fit(fit_func3, F, Ceff, p0=[650])
 x = np.linspace(0.02, F[-1], 1000)
-y = np.array(map(lambda x: fit_func3(x, C), x))
+y = np.array([fit_func3(x, C) for x in x])
 for i, j in enumerate(y):
     if j > Ceff[0]:
         break
